@@ -135,7 +135,7 @@ main()
             ;;
 
         directories)
-            directories
+            make_directories
             ;;
 
         *)
