@@ -93,14 +93,6 @@ download_picam()
 
     echo "Registering binary and removing unnecessary files"
     cp "${subdir}/picam" ${DEST_DIR} && rm -rf ${subdir}
-
-    echo
-    echo "Installed. Try the following"
-    echo "    cd ${DEST_DIR}"
-    echo "    ./picam"
-    echo "    touch hooks/start_record"
-    echo "    touch hooks/stop_record"
-    echo 
 }
 
 install_all()
@@ -109,6 +101,14 @@ install_all()
     install_dependencies
     make_directories
     download_picam
+
+    echo
+    echo "Picam installed. Try the following"
+    echo "    cd ${DEST_DIR}"
+    echo "    ./picam"
+    echo "    touch hooks/start_record"
+    echo "    touch hooks/stop_record"
+    echo 
 }
 
 uninstall()
