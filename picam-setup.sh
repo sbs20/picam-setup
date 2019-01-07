@@ -69,14 +69,10 @@ download_picam()
     tmp_file="picam-release.tar.xz"
 
     api_url="https://api.github.com/repos/iizukanao/picam/releases/latest"
-    os_version="jessie"
-    if [ "" != "$(cat /etc/os-release | grep stretch)" ]; then
-        os_version="stretch"
-    fi
 
     # The release contains a few files. We need to search for the correct one
     # This is the search string
-    search="browser_download_url.*binary-${os_version}\.tar"
+    search="browser_download_url.*binary\.tar"
 
     # Get the download URL using the search string
     bin_url=$(curl -s ${api_url} | grep ${search} | cut -d '"' -f 4)
@@ -95,7 +91,7 @@ download_picam()
     cp "${subdir}/picam" ${DEST_DIR} && rm -rf ${subdir}
 }
 
-install_all()
+install()
 {
     check_privilege
     install_dependencies
@@ -127,7 +123,7 @@ main()
 {
     case $1 in
         install)
-            install_all
+            install
             ;;
 
         uninstall)
